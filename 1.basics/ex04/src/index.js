@@ -2,6 +2,8 @@
 
 //import appCss from './App.css'; -> 이걸 읽어서 자바스크립트 코드로 만들어줘야하는 애가 있어야한다. -> Webpack
 
+//import './App.css';
+
 import { App } from './App.js';
 
 document
