@@ -1,0 +1,15 @@
+{
+  "name": "ex02",
+  "version": "1.0.0",
+  "description": "ex01: 전통적인 DOM API 기반의 애플리케이션",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.3"
+  }
+}
