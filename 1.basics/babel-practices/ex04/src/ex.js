@@ -27,7 +27,6 @@ function print({no, name, email}){
 }
 
 
-
 // for(user : users)와 같이 forEach임.
 // for ... of
 for(let user of users){
