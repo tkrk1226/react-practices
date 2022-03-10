@@ -2,7 +2,7 @@ ex08: JSX Tutorials
 01. 특징1: HTML과 차이점
 02. 특징2: Single Root node
 03. 함수 컴포넌트 만들기
-04. Pure React
+04. Pure React(React API로 작성하기)
 05. 클래스 컴포넌트 만들기
 06. 특징3: JSX 표현식 표기법 ({js expression})
 07. 특징4: 공백
