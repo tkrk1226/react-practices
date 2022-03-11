@@ -22,3 +22,8 @@ guestbook
 gallery
 mysite를 react 버전으로 만들 수 있어야한다...
 
+
+fetch("", function(res){...});
+
+res = await fetch("");
+...
