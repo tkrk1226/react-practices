@@ -27,15 +27,15 @@ export default class FoodList extends Component {
         //     components.push(<FoodListItem name={food.name} quantity={food.quantity} />);
         // });
 
-        // const components = this.props.foods.map(function(food){
-        //     return <FoodListItem name={food.name} quantity={food.quantity} />;
-        // });
+        const components = this.props.foods.map(function(food){
+            return <FoodListItem name={food.name} quantity={food.quantity} />;
+        });
 
         return(
             <ul>
-                { this.props.foods.map( food => { <FoodListItem 
+                { this.props.foods.map((food) => <FoodListItem 
                                                         name={food.name} 
-                                                        quantity={food.quantity} />}) }
+                                                        quantity={food.quantity} />) }
             </ul>
         );
     }
