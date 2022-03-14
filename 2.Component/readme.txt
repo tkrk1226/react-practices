@@ -2,7 +2,7 @@ React Practices - Component
 
 ex01 : Property
     1. Component 작성법
-    2. Data Flow : Top -> Down
+    2. Data Flow : Top -> Down *
 
 ex02 : Component Styling
 
