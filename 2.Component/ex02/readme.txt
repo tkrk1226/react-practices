@@ -25,10 +25,10 @@ webpack.config.js 설정
 
 스크립트 추가하기
   "scripts": {
-    "debug": "npx webpack serve --progress --mode development --env",
+    "debug": "npx webpack serve --config config/webpack.config.js --progress --mode development --env",
     "build": "npx webpack"
   },
-
+  
 실행
 $ npm run debug src={01|02|03|04|...} css-modules={[true] | false}
 $ npx webpack serve --progress --mode development --env src=01
