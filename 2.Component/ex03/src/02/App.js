@@ -1,16 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import TitleBar01 from './TitleBar01'
+import TitleBar02 from './TitleBar02'
 
 const App = () => {
   return (
-    <div>
-        <h1 
-            onClick={ e => console.log('click!')}
-            style={{
-                cursor: 'pointer'
-            }}>
-            ex03 : InlineHandler
-        </h1>
-    </div>
+    <Fragment>
+      <TitleBar01 />
+      <TitleBar02 />
+    </Fragment>
   )
 }
 
