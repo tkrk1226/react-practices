@@ -1,15 +1,18 @@
-import React from 'react'
-import style from './assets/css/TaskList.css'
 
-const TaskList = ({name, done}) => {
+import React from 'react';
+import styles from './assets/css/TaskList.css';
+import Task from './Task';
+
+const TaskList = ({tasks}) => {
   return (
-    <li className={style.TaskList__Task}>
-      <input type='checkbox' checked='' />
-      {name}
-      <a href='#' className={style.TaskList__Task__remove}></a>
-    </li>
-    // <div>Task</div>
-  )
+    <div className={styles.TaskList}>
+        <ul>
+            {tasks.map(task => <Task
+                                    key={task.no}
+                                    name={task.name} /> )}
+        </ul>
+    </div>     
+  );
 }
 
 export default TaskList
