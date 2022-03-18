@@ -7,7 +7,12 @@ export default function Form() {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [validEmail, setValidEmail] = useState(false); // false, "", true?
+    const [gender, setGender] = useState('female');
+    const [birthYear, setBirthYear] = useState("1984");
+    const [description, setDescription] = useState("");
+    const [agreeProv, setAgreeProv] = useState("no");
 
     const onChangeInputName = (e) => {
         // 10자 제한, 제한 같은게 없으면 비제어가 낫다
@@ -21,7 +26,33 @@ export default function Form() {
         setValidEmail(re.test(e.target.value));
     }
 
-    
+    const onChangeInputPassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const onChangeInputGender = (e) => {
+        setGender(e.target.value)
+    }
+
+    const onChangeInputBirthYear = (e) => {
+        setBirthYear(e.target.value)
+    }
+
+    const onChangeInputDescription = (e) => {
+        setDescription(e.target.value)
+    }
+
+    const onChangeAgreeProv = (e) => {
+        // (e.target.value === 'no') ? setAgreeProv('yes') : setAgreeProv('no');
+        const status = e.target.value === 'no' ? 'yes' : 'no';
+        
+        // API 호출
+        const url = `/prov/agree?status=${status}`;        
+        console.log(url);
+        if(true){
+            setAgreeProv(status);
+        }
+    }
 
     return (
         <form id="joinForm" name="joinForm" method="post" action="/do/not/post">
@@ -49,16 +80,36 @@ export default function Form() {
                             <FontAwesomeIcon icon={faTimesCircle} style={{marginLeft : 5, fontSize : 16, color : 'red'}} /> 
                 }
             <label htmlFor="password">패스워드</label>
-            <input id="password" name="password" type="password" value={ "" } />
+            <input 
+                id="password" 
+                name="password" 
+                type="password" 
+                value={password}
+                onChange={onChangeInputPassword} />
 
             <fieldset>
                 <legend>성별</legend>
-                <label>여</label> <input type="radio" name="gender" value={ "female" } defaultChecked={ true } />
-                <label>남</label> <input type="radio" name="gender" value={ "male" } defaultChecked={ false } />
+                <label>여</label> 
+                <input 
+                    type="radio" 
+                    name="gender" 
+                    value={ "female" } 
+                    checked={gender === 'female'}
+                    onChange={onChangeInputGender} />
+                <label>남</label> 
+                <input 
+                    type="radio" 
+                    name="gender" 
+                    value={ "male" } 
+                    checked={gender === 'male'}
+                    onChange={onChangeInputGender} />
             </fieldset>
 
             <label htmlFor="birthYear">생년</label>
-            <select id="birthYear">
+            <select 
+                id="birthYear" 
+                value={birthYear} 
+                onChange={onChangeInputBirthYear}>
                 <option value='1984'>1984년</option>
                 <option value='1985'>1985년</option>
                 <option value='1986'>1986년</option>
@@ -69,11 +120,17 @@ export default function Form() {
             </select>
 
             <label htmlFor="birthYear">자기소개</label>
-            <textarea value={""} />
+            <textarea value={description} onChange={onChangeInputDescription}/>
 
             <fieldset>
                 <legend>약관동의</legend>
-                <input id="agree-prov" type="checkbox" name="agreeProv" value= { "yes" } defaultChecked={ false } />
+                <input 
+                    id="agree-prov" 
+                    type="checkbox" 
+                    name="agreeProv" 
+                    value= {agreeProv} 
+                    checked={agreeProv === 'yes'}
+                    onChange={onChangeAgreeProv} />
                 <label>서비스 약관에 동의합니다.</label>
             </fieldset>
 
