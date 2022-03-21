@@ -17,7 +17,7 @@ ex02 : Component Styling (Working with UI)
 
 설치
 $ npm i -D webpack webpack-cli webpack-dev-server style-loader css-loader node-sass sass-loader babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react
-$ npm i react react-dom
+$ npm i react react-dom prop-types
 
 설정
 babel.config.json 설정
