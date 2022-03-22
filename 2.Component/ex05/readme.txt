@@ -1,42 +1,20 @@
-ex05: Component - LifeCycle
+ex05: Component - Lifecycle
 
-01. Class Component
-  1) LifeCycle I   : mount
-    - constructor
-    - getDerivedStateFromProps : props로 받아온 값을 state에 동기화한다. [react v16.3]
-    - render
-    - componentDidMount : 컴포넌트 생성을 마치고 렌더링 작업이 끝난 후, 
-  2) LifeCycle II  : update
-    - getDerivedStateFromProps : props로 받아온 값을 state에 동기화한다. [react v16.3]
-    - shouldComponentUpdate : props나 state을 변경 했을 때, 리렌더링 여부를 결정한다.
-    - render
-      * componentDidUpdate : DOM 업데이트가 끝난 직후 호출된다. DOM 작업이 가능하다.
-  3) LifeCycle III : Unmount
-    - componentWillUnmount : 컴포넌트를 DOM에서 제거하기 전
+01. Class Component LifeCircle
+  1) Lifecycle I: mount
+      [1]constructor
+      [2]getDerivedStateFromProps: props로 받아온 값을 state에 동기화한다.[react v16.3]
+      [3]render
+      [4]*componentDidMount: 컴포넌트 생성을 마치고 렌더링 작업이 끝난 후,
+  2) Lifecycle II: update
+     getDerivedStateFromProps: props로 받아온 값을 state에 동기화한다.[react v16.3]
+     shouldComponentUpdate: props나 state을 변경 했을 때, 리렌더링 여부를 결정한다.
+     render
+      *componentDidUpdate: DOM 업데이트가 끝난 직 후 호출된다. DOM 작업이 가능하다.
+  3) Lifecycle III: Unmount
+     *componentWillUnmount: 컴포넌트를 DOM에서 제거하기 전 
 
-
-02. Alternative(대용) Functional Component LifeCycle : useEffect Hook
-
-03. 상태(Stateful) 컴포넌트 vs 순수(Pure, Dumb) 컴포넌트
-    1. 상태 컴포넌트
-      - 상태를 관리하는 컴포넌트
-      - 보통 상태 컴포넌트는 컴포넌트 계층에서 상위에 있다.
-      - 상태 컴포넌트는 순수 컴포넌트를 하나 이상 래핑할 수 있다.
-    2. 순수 컴포넌트
-      - 상태관리 없이 속성(props)로 화면만 렌더링하는 컴포넌트
-      - 재사용성이 좋다. 테스트하기도 좋다.
-    3. 애플리케이션의 컴포넌트들은 상태 컴포넌트와 순수 컴포넌트로 분리하여 만드는 것이 좋다.
-    4. 어떤 컴포넌트가 상태 컴포넌트인가?
-      - 상태를 기반으로 렌더링 하는 컴포넌트 ex) 제어 컴포넌트
-      - 많은 하위 컴포넌트를 가지고 있는 공통(하나)의 상위 컴포넌트
-      - 컴포넌트 hierachy 에서 상위에 있는 상태를 가져야만 하는 컴포넌트
-      - 못 찾겠으면, 상태를 관리하는 컴포넌트를 만들고 하위(pure) 컴포넌트를 래핑한다.
-    5. 예제
-       emaillist
-
-04.  Data Flow(Bottom -> Up)
-     emaillist
-
+02. Alternative(대용): Functional Component Lifecycle: useEffect Hook
 
 1. 설치
 $ npm i -D webpack webpack-cli webpack-dev-server style-loader css-loader node-sass sass-loader babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react
