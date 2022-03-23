@@ -16,6 +16,15 @@ ex05: Component - Lifecycle
      *componentWillUnmount: 컴포넌트를 DOM에서 제거하기 전 
 
 02. Alternative(대용): Functional Component Lifecycle: useEffect Hook
+  1) Alternative 01: getDerivedStateFromProps
+  2) After Rendering 함수( 상태의 변화 -> 렌더링 -> 함수)
+  3) 어떤 특정 상태의 변화에 반응하는 After Rendering 함수 : 관심분리
+  4) Alternative : componentDidMount & componentWillUnmount
+  5) 예제
+    src/02
+
+03. Clock Component(Class Component Lifecycle 이용) : src/03
+04. Clock Component(useEffect Hook 이용) : src/04 [과제] 
 
 1. 설치
 $ npm i -D webpack webpack-cli webpack-dev-server style-loader css-loader node-sass sass-loader babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react
