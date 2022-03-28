@@ -11,14 +11,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.JsonResult;
+import com.example.demo.repository.CardRepository;
 
 @RestController
 @RequestMapping("/api")
 public class ApiController {
+
+	@Autowired
+	private CardRepository cardRepository;
 	
-	@GetMapping("/card/{}")
+	@GetMapping("/card")
 	public ResponseEntity<JsonResult> readCard() {
-		return null;
+		
+		System.out.println(cardRepository.findAll());
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(JsonResult.success(cardRepository.findAll()));
 	}
 
 }
