@@ -26,10 +26,10 @@ spring:
 
    # datasource
    datasource:
-      driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mysql://192.168.0.83:3307/webdb?characterEncoding=utf8
-      username: webdb
-      password: webdb
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=MYSQL
+      username: sa
+      password: 
 
 
 ---
@@ -60,9 +60,9 @@ server:
       encoding:
          charset: UTF-8
          enabled: true
-         
+
 ---
 # logging
 logging:
    level:
-      root: WARN            
+      root: INFO
