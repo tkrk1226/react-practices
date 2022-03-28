@@ -3,6 +3,11 @@ spring:
    profiles:
       active: development
 
+   # devtools - live reload
+   devtools:
+      livereload:
+         enabled: true
+
 ---
 # common spring boot configuration
 spring:

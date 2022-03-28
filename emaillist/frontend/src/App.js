@@ -9,6 +9,7 @@ const App = () => {
   const [emails, setEmails] = useState([]);
 
   useEffect(async () => {
+    try{
       const response = await fetch('/api', {
         method: 'get',
         headers: {
@@ -19,30 +20,82 @@ const App = () => {
       });
 
       if(!response.ok){
-        console.log('error:', response.status, response.statusText);
-        return;
+        throw new Error(`${response.status} ${response.statusText}`)
       }
 
       const json = await response.json(); // 비동기 함수
       
       if(json.result !== 'success'){
-        console.log('error:', json.message);
-        return;
+        throw new Error(`${json.result} ${json.message}`);
       }
 
       setEmails(json.data);
+    } catch(err){
+      console.log(err);
+    }
 
       // console.log(response);
   }, []);
 
 
-  const notifyKeywordChange = function(keyword) {
-    setEmails(data.filter(e => e.firstName.indexOf(keyword) != -1 || e.lastName.indexOf(keyword) != -1 || e.email.indexOf(keyword) != -1));
+  const notifyKeywordChange = async function(keyword) {
+    console.log(`/api?kw=${keyword}`)
+    try{
+      const response = await fetch(`/api?kw=${keyword}`, {
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: null
+      });
+
+      if(!response.ok){
+        throw new Error(`${response.status} ${response.statusText}`)
+      }
+
+      const json = await response.json(); // 비동기 함수
+      
+      if(json.result !== 'success'){
+        throw new Error(`${json.result} ${json.message}`);
+      }
+
+      setEmails(json.data);
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+  const notifyEmailadd = async (email) => {
+    try {  
+      const response = await fetch('/api', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(email)
+      });
+
+      if(!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+
+      const json = await response.json();
+
+      if(json.result !== 'success') {
+        throw new Error(`${json.result} ${json.message}`);
+      }
+
+      setEmails([json.data, ...emails]);
+    } catch(err) {
+      console.log(err);      
+    }    
   }
 
   return (
     <div className={'App'}>
-      <RegisterForm />
+      <RegisterForm callback={notifyEmailadd} />
       <SearchBar callback={notifyKeywordChange}/>
       <Emaillist emails={emails} />
     </div>
