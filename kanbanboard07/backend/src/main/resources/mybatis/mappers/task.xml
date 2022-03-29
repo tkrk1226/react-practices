@@ -21,6 +21,17 @@
 		  		select last_insert_id()
 	  		]]>
 	  	</selectKey>	
-	
 	</insert>
+	
+	<delete id="delete" parameterType="long">
+		<![CDATA[
+			delete from task where no = #{_parameter}
+		]]>
+	</delete>
+	
+	<update id="update" parameterType="taskvo">
+		<![CDATA[
+			update task set done = #{done} where no = #{no}
+		]]>
+	</update>
 </mapper>

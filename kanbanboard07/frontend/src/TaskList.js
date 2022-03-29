@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import styles from './assets/css/TaskList.css';
 import Task from './Task';
 
-const TaskList = ({tasks, cardNo, callback}) => {
+const TaskList = ({tasks, no, callback}) => {
 
 
   return (
@@ -11,8 +11,13 @@ const TaskList = ({tasks, cardNo, callback}) => {
         <ul>
             {tasks.map(task => <Task
                                     key={task.no}
+                                    no = {task.no}
                                     name={task.name}
-                                    done={task.done} /> )}
+                                    done={task.done}
+                                    callback={{
+                                      delete : callback.delete,
+                                      update : callback.update
+                                    }} /> )}
             <input 
               type='text'
               name={'task_name'}
@@ -30,11 +35,11 @@ const TaskList = ({tasks, cardNo, callback}) => {
                       const newTask = { 
                         name : e.target.value ,
                         done : 'N', 
-                        cardNo : cardNo };
+                        cardNo : no };
                       
                       e.target.value = '';
 
-                      callback(newTask);
+                      callback.insert(newTask);
 
                     } catch(err) {
                       console.log(err.message);

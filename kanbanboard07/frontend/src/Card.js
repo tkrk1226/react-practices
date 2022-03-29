@@ -40,9 +40,9 @@ const Card = ({no, title, description}) => {
 
   }, []);
 
-  const notifyTaskadd = async (task) => {
+  const notifyTaskAdd = async (task) => {
     try {  
-      const response = await fetch(`/api/card/${no}`, {
+      const response = await fetch(`/api/card/insert/${no}`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -67,6 +67,62 @@ const Card = ({no, title, description}) => {
     }    
   }
 
+  const notifyTaskDelete = async (taskNo) => {
+    try {  
+      const response = await fetch(`/api/task/delete/${taskNo}`, {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: null
+      });
+
+      if(!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+
+      const json = await response.json();
+
+      if(json.result !== 'success') {
+        throw new Error(`${json.result} ${json.message}`);
+      }
+      setTasks(tasks.filter(({no}) => { 
+        return (no !== taskNo);
+       }));
+    } catch(err) {
+      console.log(err);      
+    }    
+  }
+
+  const notifyTaskUpdate = async (taskNo) => {
+    try {  
+      const response = await fetch(`/api/task/update/${taskNo}`, {
+        method: 'put',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: null
+      });
+
+      if(!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+
+      const json = await response.json();
+
+      if(json.result !== 'success') {
+        throw new Error(`${json.result} ${json.message}`);
+      }
+
+      setTasks(tasks);
+
+    } catch(err) {
+      console.log(err);      
+    }    
+  }
+
   return (
     <div className={style.Card}>
         <div 
@@ -79,8 +135,12 @@ const Card = ({no, title, description}) => {
                 {description}
                 <TaskList 
                   tasks={tasks} 
-                  callback={notifyTaskadd}
-                  cardNo = {no}
+                  callback={{
+                    insert : notifyTaskAdd,
+                    delete : notifyTaskDelete,
+                    update : notifyTaskUpdate
+                  }}
+                  no = {no}
                   />
               </div>
               : null

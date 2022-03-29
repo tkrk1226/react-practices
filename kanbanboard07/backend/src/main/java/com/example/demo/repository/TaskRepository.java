@@ -21,5 +21,13 @@ public class TaskRepository {
 	public Boolean insert(TaskVo vo) {
 		return sqlSession.insert("task.insert", vo) == 1;
 	}
+
+	public Boolean delete(Long taskNo) {
+		return sqlSession.delete("task.delete", taskNo) == 1;
+	}
+
+	public Boolean update(Long taskNo) {
+		return sqlSession.update("task.update", taskNo) == 1;
+	}
 	
 }
