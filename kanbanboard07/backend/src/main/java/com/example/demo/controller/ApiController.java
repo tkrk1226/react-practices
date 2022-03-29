@@ -68,13 +68,21 @@ public class ApiController {
 				.body(JsonResult.success(taskNo));
 	}
 	
-	@PutMapping("/task/update/{no}")
-	public ResponseEntity<JsonResult> updateTask(@PathVariable (value="no") Long taskNo){
+	@PutMapping("/task/update")
+	public ResponseEntity<JsonResult> updateTask(@RequestBody TaskVo vo){
 		
-		taskRepository.update(taskNo);
+		System.out.println("------------------------------------");
+		System.out.println(vo.getDone());
+		System.out.println("------------------------------------");
+		
+		taskRepository.update(vo);
+		
+		System.out.println("------------------------------------");
+		System.out.println(vo.getDone());
+		System.out.println("------------------------------------");
 		
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body(JsonResult.success(taskNo));
+				.body(JsonResult.success(vo));
 	}
 }

@@ -61,7 +61,7 @@ const Card = ({no, title, description}) => {
         throw new Error(`${json.result} ${json.message}`);
       }
 
-      setTasks([json.data, ...tasks]);
+      setTasks([...tasks, json.data]);
     } catch(err) {
       console.log(err);      
     }    
@@ -95,15 +95,15 @@ const Card = ({no, title, description}) => {
     }    
   }
 
-  const notifyTaskUpdate = async (taskNo) => {
+  const notifyTaskUpdate = async (task) => {
     try {  
-      const response = await fetch(`/api/task/update/${taskNo}`, {
+      const response = await fetch(`/api/task/update`, {
         method: 'put',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: null
+        body: JSON.stringify(task)
       });
 
       if(!response.ok) {
@@ -115,8 +115,13 @@ const Card = ({no, title, description}) => {
       if(json.result !== 'success') {
         throw new Error(`${json.result} ${json.message}`);
       }
-
-      setTasks(tasks);
+      console.log(tasks);
+      setTasks(tasks.map(task => {
+        if(task.no === json.data.no){
+          task.done = json.data.done;
+        }
+        return task;
+      }));
 
     } catch(err) {
       console.log(err);      

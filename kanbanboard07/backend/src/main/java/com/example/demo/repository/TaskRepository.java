@@ -26,8 +26,15 @@ public class TaskRepository {
 		return sqlSession.delete("task.delete", taskNo) == 1;
 	}
 
-	public Boolean update(Long taskNo) {
-		return sqlSession.update("task.update", taskNo) == 1;
+	public Boolean update(TaskVo vo) {
+		
+		if("Y".equals(vo.getDone())) {
+			vo.setDone("N");
+		} else {
+			vo.setDone("Y");
+		}
+		
+		return sqlSession.update("task.update", vo) == 1;
 	}
 	
 }

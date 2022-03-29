@@ -5,7 +5,7 @@
 	<select id="findAll" parameterType="long" resultType="taskvo">
 		<![CDATA[
 			select
-			  no, name, done
+			  no, name, done, card_no 
 			from task where card_no = #{_parameter}
 	  	]]>
 	</select>

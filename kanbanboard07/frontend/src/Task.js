@@ -8,7 +8,13 @@ const Task = ({no, name, done, callback}) => {
           type='checkbox'
           checked={done === 'Y'}
           onClick={() => {
-            callback.update(no);
+
+            const newTask = {
+              no : no,
+              done : done
+            }
+
+            callback.update(newTask);
           }} />
         {name}
         <a 
