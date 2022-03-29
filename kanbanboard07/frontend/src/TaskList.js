@@ -31,7 +31,11 @@ const TaskList = ({tasks, cardNo, callback}) => {
                         name : e.target.value ,
                         done : 'N', 
                         cardNo : cardNo };
+                      
+                      e.target.value = '';
+
                       callback(newTask);
+
                     } catch(err) {
                       console.log(err.message);
                     }
