@@ -71,15 +71,7 @@ public class ApiController {
 	@PutMapping("/task/update")
 	public ResponseEntity<JsonResult> updateTask(@RequestBody TaskVo vo){
 		
-		System.out.println("------------------------------------");
-		System.out.println(vo.getDone());
-		System.out.println("------------------------------------");
-		
 		taskRepository.update(vo);
-		
-		System.out.println("------------------------------------");
-		System.out.println(vo.getDone());
-		System.out.println("------------------------------------");
 		
 		return ResponseEntity
 				.status(HttpStatus.OK)
