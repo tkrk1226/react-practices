@@ -1,4 +1,5 @@
 import fs from 'fs';
+import update from 'react-addons-update';
 
 let state = {
     order : JSON.parse(fs.readFileSync('./json/data.json').toString())
@@ -22,5 +23,4 @@ updateOrder2.receive = '부산시 해운대구 우동...';
 
 console.log(state.order, updateOrder2, state.order === updateOrder2);
 
-console.log("==========================================================================");
 
