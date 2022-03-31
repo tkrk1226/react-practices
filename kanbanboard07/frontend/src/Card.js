@@ -8,7 +8,7 @@ const Card = ({no, title, description}) => {
   const [showTaskList, setShowTaskList] = useState(false);
   
   const onClickShowTaskList = () => {
-    console.log(`fetch task(/api/task?cardNo=${no}...`)
+    // console.log(`fetch task(/api/task?cardNo=${no}...`)
     setShowTaskList(!showTaskList);
   }
   
