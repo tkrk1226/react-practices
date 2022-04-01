@@ -13,7 +13,6 @@ import Error404 from "./component/error/Error404";
 
 import './assets/scss/App.scss'
 
-
 export default function App() {
     return (
         <Router>
@@ -21,7 +20,7 @@ export default function App() {
                 <Route path='/' element={<Main />}/>
                 <Route path='gallery' element={<Gallery />}/>
                 <Route path='guestbook' element={<Guestbook />}/>
-                <Route exact path='about' element={<About />}>
+                <Route path='about' element={<About />}>
                     <Route path='me' element={<Me />} />
                 </Route>
                 <Route path='user/login' element={<Login />}/>
