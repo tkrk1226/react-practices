@@ -6,6 +6,7 @@ import Gallery from "./component/Gallery";
 import Guestbook from "./component/Guestbook";
 import About from "./component/about/About";
 import Me from './component/about/Me';
+import Location from './component/about/Location';
 import Login from "./component/user/Login";
 import Settings from "./component/user/Settings";
 import Join from "./component/user/Join";
@@ -20,8 +21,9 @@ export default function App() {
                 <Route path='/' element={<Main />}/>
                 <Route path='gallery' element={<Gallery />}/>
                 <Route path='guestbook' element={<Guestbook />}/>
-                <Route path='about' element={<About />}>
-                    <Route path='me' element={<Me />} />
+                <Route element={<About />}>
+                    <Route path='about/me' element={<Me />} />
+                    <Route path='about/location' element={<Location />} />
                 </Route>
                 <Route path='user/login' element={<Login />}/>
                 <Route path='user/settings' element={<Settings />}/>
