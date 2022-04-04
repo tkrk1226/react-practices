@@ -31,7 +31,14 @@ spring:
       username: webdb
       password: webdb
 
+# mybatis
+mybatis:
+   config-location: classpath:mybatis/configuration.xml
 
+# logging
+logging:
+   level:
+      root: WARN  
 ---
 # development profile: spring boot configuration
 spring:
@@ -44,14 +51,6 @@ spring:
       livereload:
          enabled: true
 
-
----
-# mybatis
-mybatis:
-   config-location: classpath:mybatis/configuration.xml
-
-   
----
 # server
 server:
    port: 8080
@@ -62,7 +61,20 @@ server:
          enabled: true
          
 ---
-# logging
-logging:
-   level:
-      root: WARN            
+
+# development profile: spring boot configuration
+spring:
+   config:
+      activate:
+         on-profile: production
+         
+# server
+server:
+   port: 9090
+   servlet:
+      context-path: /
+      encoding:
+         charset: UTF-8
+         enabled: true   
+
+         
